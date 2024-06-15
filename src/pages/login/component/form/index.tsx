@@ -2,15 +2,23 @@ import { useEffect, useState } from "react";
 import Button from "../../../../components/button";
 import Input from "../../../../components/input";
 import FormError from "../../../../components/form-error";
+import { useNavigate } from "react-router-dom";
 
 type errorType = {
   email: string;
   password: string;
 };
 
+const user = {
+  email: "goku@hotmail.com",
+  password: "123456",
+};
+
 const LoginForm = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
+  const navigate = useNavigate();
 
   const [error, setError] = useState<errorType>({
     password: "Informe um email ou número de telefone válido.",
@@ -47,6 +55,15 @@ const LoginForm = () => {
     validateEmail();
   }, [email]);
 
+  const handleLogin = () => {
+    if (user.email === email && user.password === password) {
+      navigate("/home");
+      return;
+    } else {
+      alert("Login ou senha errada");
+    }
+  };
+
   const isFormValid = !error.email && !error.password;
 
   return (
@@ -72,7 +89,7 @@ const LoginForm = () => {
         <Button
           color="bg-red-500"
           disabled={!isFormValid}
-          onClick={() => alert("Clicou")}
+          onClick={handleLogin}
         >
           Entrar
         </Button>
