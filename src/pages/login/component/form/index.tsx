@@ -81,7 +81,21 @@ const LoginForm = () => {
           Usar um código de acesso
         </Button>
         <a href="#">Esquece a senha?</a>
-        <div></div>
+        <div className="flex flex-col">
+          <div className="flex gap-1 mb-3">
+            <input className="form-checkbox h-5 w-5" type="checkbox" />
+            <p> Lembre-se de mim</p>
+          </div>
+          <div className="flex gap-1 items-center mb-3">
+            <p>Novo por aqui?</p>
+            <a className="font-bold cursor-pointer">Assine agora.</a>
+          </div>
+          <p className="text-sm">
+            Esta página é protegida pelo Google reCAPTCHA para garantir que você
+            não é um robô.{" "}
+            <a className="text-blue-600 cursor-pointer">Saiba mais.</a>
+          </p>
+        </div>
       </form>
     </div>
   );
