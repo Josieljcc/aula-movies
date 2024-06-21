@@ -2,8 +2,14 @@ import { useEffect, useState } from "react";
 import { getMoviesWeek } from "../../service/MoviesApi";
 import MovieCard from "../../componentes/movieCard";
 
+type MovieProps = {
+  id: number;
+  title: string;
+  poster_path: string;
+};
+
 const Home = () => {
-  const [movies, setMovies] = useState<any[]>([]);
+  const [movies, setMovies] = useState<MovieProps[]>([]);
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -27,7 +33,7 @@ const Home = () => {
             <MovieCard
               key={movie.id}
               title={movie.title}
-              posterUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              posterUrl={movie.poster_path}
             />
           ))}
         </ul>
