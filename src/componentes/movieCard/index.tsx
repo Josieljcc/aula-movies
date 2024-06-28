@@ -1,9 +1,9 @@
+import { imageUrl } from "../../hooks/constants";
+
 type MovieCardProps = {
   title: string;
   posterUrl: string;
 };
-
-const imageUrl = "https://image.tmdb.org/t/p/w500";
 
 const MovieCard = ({ title, posterUrl }: MovieCardProps) => {
   return (
