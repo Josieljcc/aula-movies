@@ -1,8 +1,12 @@
-const apiKey = "1a93463100c76c8e5fd1c293eabaca13";
+import { apiKey } from "../hooks/constants";
 
-export const getMoviesWeek = async () => {
+type GetMoviesWeekType = {
+  page: number;
+};
+
+export const getMoviesWeek = async ({ page }: GetMoviesWeekType) => {
   const response = await fetch(
-    `https://api.themoviedb.org/3/trending/all/week?api_key=${apiKey}`
+    `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${page}`
   );
   const movies = response.json();
   return movies;
